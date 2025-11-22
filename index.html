@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/mindpop/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mind Pop - Organize Your Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="module" crossorigin src="/mindpop/assets/index-B_pMUrHX.js"></script>
+  <link rel="stylesheet" crossorigin href="/mindpop/assets/index-plmBaWD6.css">
+</head>
+
+<body>
+  <div id="app">
+    <nav class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-brain logo-icon"></i>
+        <span><span class="text-mind">Mind</span> <span class="text-pop">Pop</span></span>
+      </div>
+      <ul class="nav-links">
+        <li class="active" data-target="dashboard">
+          <i class="fa-solid fa-house"></i>
+          <span data-i18n="dashboard">Dashboard</span>
+        </li>
+        <li data-target="planner">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span data-i18n="planners">Planners</span>
+        </li>
+        <li data-target="todo">
+          <i class="fa-solid fa-check-double"></i>
+          <span data-i18n="todo">To-Do</span>
+        </li>
+        <li data-target="finance">
+          <i class="fa-solid fa-wallet"></i>
+          <span data-i18n="finance">Finance</span>
+        </li>
+        <li data-target="mood">
+          <i class="fa-solid fa-face-smile"></i>
+          <span data-i18n="mood">Mood</span>
+        </li>
+        <li data-target="ai-chat">
+          <i class="fa-solid fa-robot"></i>
+          <span data-i18n="ai_assistant">AI Assistant</span>
+          <span class="badge">PRO</span>
+        </li>
+      </ul>
+      <div class="language-selector">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="he">HE</button>
+      </div>
+      <div class="user-profile">
+        <div class="avatar">
+          <img src="https://ui-avatars.com/api/?name=User&background=random" alt="User">
+        </div>
+        <div class="user-info">
+          <span class="name">Guest User</span>
+          <span class="plan" data-i18n="free_plan">Free Plan</span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <h1 id="page-title" data-i18n="dashboard">Dashboard</h1>
+        <div class="actions">
+          <button class="btn-premium" id="upgrade-btn" data-i18n="upgrade_btn">Upgrade to PRO</button>
+          <button class="icon-btn"><i class="fa-solid fa-bell"></i></button>
+        </div>
+      </header>
+
+      <div id="content-area">
+
+        <!-- Dashboard View -->
+        <div id="view-dashboard" class="view active">
+          <div class="welcome-banner">
+            <h2 data-i18n="welcome_title">Hello, Mind Popper! 🧠</h2>
+            <p data-i18n="welcome_subtitle">Let's organize your thoughts and your day.</p>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="card summary-card">
+              <h3><i class="fa-solid fa-list-check"></i> <span data-i18n="tasks_today">Tasks Today</span></h3>
+              <div class="big-number">5</div>
+              <p data-i18n="tasks_stat">2 pending, 3 completed</p>
+            </div>
+            <div class="card summary-card">
+              <h3><i class="fa-solid fa-wallet"></i> <span data-i18n="balance">Balance</span></h3>
+              <div class="big-number positive">R$ 1.250</div>
+              <p data-i18n="balance_stat">+R$ 200 this week</p>
+            </div>
+            <div class="card summary-card">
+              <h3><i class="fa-solid fa-face-smile-beam"></i> <span data-i18n="mood">Mood</span></h3>
+              <div class="mood-display" data-i18n="mood_happy">😊 Happy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planner View -->
+        <div id="view-planner" class="view">
+          <div class="planner-tabs">
+            <button class="tab-btn active" data-planner="daily" data-i18n="daily">Daily</button>
+            <button class="tab-btn" data-planner="weekly" data-i18n="weekly">Weekly</button>
+            <button class="tab-btn" data-planner="monthly" data-i18n="monthly">Monthly</button>
+            <button class="tab-btn" data-planner="annual" data-i18n="annual">Annual</button>
+          </div>
+
+          <!-- Daily Planner -->
+          <div id="planner-daily" class="planner-section active">
+            <div class="daily-layout">
+              <div class="card schedule-card">
+                <div class="card-header">
+                  <h3 data-i18n="schedule">Schedule</h3>
+                  <button class="icon-btn-small" id="add-daily-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <ul class="time-slots" id="daily-schedule-list">
+                  <li><span class="time">08:00</span> <span class="event" data-i18n="morning_routine">Morning
+                      Routine</span></li>
+                  <li><span class="time">09:00</span> <span class="event" data-i18n="work_study">Work / Study</span>
+                  </li>
+                  <li><span class="time">12:00</span> <span class="event" data-i18n="lunch">Lunch</span></li>
+                </ul>
+              </div>
+              <div class="card journal-card">
+                <h3><i class="fa-solid fa-pen-fancy"></i> <span data-i18n="daily_journal">Daily Journal</span></h3>
+                <p class="subtitle" data-i18n="journal_subtitle">Thoughts, gratitude, or just a brain dump.</p>
+                <textarea id="daily-journal" placeholder="Today I felt..."
+                  data-i18n-placeholder="journal_placeholder"></textarea>
+                <button class="btn-primary" id="save-journal" data-i18n="save_entry">Save Entry</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Planner -->
+          <div id="planner-weekly" class="planner-section">
+            <div class="section-header">
+              <p data-i18n="weekly_hint">Click on a day to add a note</p>
+            </div>
+            <div class="weekly-grid" id="weekly-grid">
+              <!-- JS Populated -->
+            </div>
+          </div>
+
+          <!-- Monthly Planner -->
+          <div id="planner-monthly" class="planner-section">
+            <div class="calendar-header">
+              <button id="prev-month"><i class="fa-solid fa-chevron-left"></i></button>
+              <h2 id="current-month">November 2025</h2>
+              <button id="next-month"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="weekdays-header">
+              <div data-i18n="sun">Sun</div>
+              <div data-i18n="mon">Mon</div>
+              <div data-i18n="tue">Tue</div>
+              <div data-i18n="wed">Wed</div>
+              <div data-i18n="thu">Thu</div>
+              <div data-i18n="fri">Fri</div>
+              <div data-i18n="sat">Sat</div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid">
+              <!-- JS Populated -->
+            </div>
+          </div>
+
+          <!-- Annual Planner -->
+          <div id="planner-annual" class="planner-section">
+            <div class="annual-grid" id="annual-grid">
+              <!-- JS Populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- To-Do View -->
+        <div id="view-todo" class="view">
+          <div class="todo-container">
+            <div class="add-task">
+              <input type="text" id="new-task-input" placeholder="Add a new task..."
+                data-i18n-placeholder="add_task_placeholder">
+              <button id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <ul class="task-list" id="task-list">
+              <!-- JS Populated -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Finance View -->
+        <div id="view-finance" class="view">
+          <div class="finance-controls">
+            <div class="balance-display">
+              <span data-i18n="total_balance">Total Balance</span>
+              <h2 id="total-balance">R$ 0,00</h2>
+            </div>
+            <button class="btn-primary" id="add-transaction-btn" data-i18n="add_transaction">Add Transaction</button>
+          </div>
+          <div class="transactions-list" id="transactions-list">
+            <!-- JS Populated -->
+          </div>
+        </div>
+
+        <!-- Mood View -->
+        <div id="view-mood" class="view">
+          <div class="mood-selector">
+            <h3 data-i18n="mood_question">How are you feeling today?</h3>
+            <div class="emojis">
+              <button class="mood-btn" data-mood="rad"><i class="fa-solid fa-face-grin-stars"></i></button>
+              <button class="mood-btn" data-mood="happy"><i class="fa-solid fa-face-smile"></i></button>
+              <button class="mood-btn" data-mood="neutral"><i class="fa-solid fa-face-meh"></i></button>
+              <button class="mood-btn" data-mood="sad"><i class="fa-solid fa-face-frown"></i></button>
+              <button class="mood-btn" data-mood="awful"><i class="fa-solid fa-face-dizzy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Chat View -->
+        <div id="view-ai-chat" class="view">
+          <div class="chat-interface">
+            <div class="chat-messages" id="chat-messages">
+              <div class="message bot">
+                <div class="bubble" data-i18n="ai_welcome">Hello! I'm your Mind Pop AI. How can I help you organize your
+                  life today?</div>
+              </div>
+            </div>
+            <div class="chat-input">
+              <input type="text" id="ai-input" placeholder="Ask me anything..." data-i18n-placeholder="ai_placeholder">
+              <button id="send-ai-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Universal Modal -->
+    <div id="planner-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="modal-title">Add Event</h3>
+        <div class="modal-body">
+          <!-- List for existing events (Monthly view mainly) -->
+          <ul id="modal-existing-list" class="modal-list"></ul>
+
+          <div class="input-group">
+            <input type="text" id="modal-input-1" placeholder="Title / Event">
+            <input type="time" id="modal-input-time" style="display:none;">
+          </div>
+          <textarea id="modal-input-desc" placeholder="Description (optional)"></textarea>
+          <button id="modal-save-btn" class="btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premium Modal -->
+    <div id="premium-modal" class="modal">
+      <div class="modal-content premium-content">
+        <span class="close-modal" id="close-premium">&times;</span>
+        <div class="premium-header">
+          <i class="fa-solid fa-crown crown-icon"></i>
+          <h2>Unlock Your Full Potential</h2>
+          <p>Upgrade to Mind Pop <span class="pro-badge">PRO</span></p>
+        </div>
+
+        <div class="premium-features">
+          <div class="feature-item">
+            <div class="icon-box"><i class="fa-solid fa-robot"></i></div>
+            <div class="text">
+              <h4>AI Assistant</h4>
+              <p>Personalized advice to organize your life.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="icon-box"><i class="fa-solid fa-comments"></i></div>
+            <div class="text">
+              <h4>Community Chat</h4>
+              <p>Connect with other Mind Poppers.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="icon-box"><i class="fa-solid fa-ban"></i></div>
+            <div class="text">
+              <h4>No Ads</h4>
+              <p>Focus on what matters, distraction-free.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="icon-box"><i class="fa-solid fa-trophy"></i></div>
+            <div class="text">
+              <h4>Monthly Challenges</h4>
+              <p>Win prizes by staying organized.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="premium-pricing">
+          <div class="price-tag">
+            <span class="currency">R$</span>
+            <span class="amount">10</span>
+            <span class="period">/month</span>
+          </div>
+          <button class="btn-premium-large">Get PRO Now</button>
+          <p class="guarantee">Cancel anytime. No hidden fees.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
